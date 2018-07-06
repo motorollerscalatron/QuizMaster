@@ -1,8 +1,24 @@
-<% provide(:title, "Home") %>
-<h1>Quiz Master</h1>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class=question_form">
+        <%= render 'shared/question_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Question Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+<% else %>
+  <% provide(:title, "Home") %>
+  <h1>Quiz Master</h1>
 
-<div class="center jumbotron">
+  <div class="center jumbotron">
 
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 
-</div>
+  </div>
+<% end %>
