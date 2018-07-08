@@ -17,5 +17,7 @@ end
 users = User.order(:created_at).take(6)
 50.times do
   description = Faker::Lorem.sentence(5)
-  users.each { |user| user.questions.create!(description: description) }
+  answer = Faker::Lorem.word
+  is_public = Faker::Boolean.boolean(0.5)
+  users.each { |user| user.questions.create!(description: description, answer: answer, is_public: is_public) }
 end

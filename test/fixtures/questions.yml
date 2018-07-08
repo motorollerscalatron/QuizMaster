@@ -3,28 +3,28 @@
 mind_expander:
   description: "What did the dormouse say"
   answer: "feed your head"
-  ispublic: true
+  is_public: true
   user: michael
   created_at: <%= 3.years.ago %>
 
 mediocre:
   description: "Where is the capital city of Japan"
   answer: "tokyo"
-  ispublic: false
+  is_public: false
   user: michael
   created_at: <%= 2.years.ago %>
 
 most_recent:
   description: "Do you like fish?" 
   answer: "yes"
-  ispublic: false
+  is_public: true
   user: michael
   created_at: <%= Time.zone.now %>
 
 stranger:
   description: "Where is the capital city of Czech Republic"
   answer: "Praha"
-  ispublic: false
+  is_public: false
   user: archer
   created_at: <%= 2.years.ago %>
 
@@ -32,7 +32,7 @@ stranger:
 question_<%= n %>:
   description: <%= Faker::Lorem.sentence(5) %>
   answer: <%= Faker::Lorem.sentence(5) %> 
-  ispublic: <%= Faker::Boolean.boolean %>
+  is_public: <%= Faker::Boolean.boolean(0.5) %>
   created_at: <%= 42.days.ago %>
   user: michael
 <% end %>
