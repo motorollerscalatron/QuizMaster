@@ -1,6 +1,17 @@
 class QuestionsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :logged_in_user, only: [:index, :create, :destroy]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
+
+  def index
+    @question = Question.where("is_public = ?", 't').paginate(page: params[:page])
+#    @question = Question.paginate(page: params[:page])
+
+    render 'questions/index'
+  end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
 
   def create
     @question = current_user.questions.build(question_params)
@@ -13,6 +24,14 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    @question = Question.find(params[:id])
+    if @question.update_attributes(question_params)
+    else
+      render 'edit'
+    end
+  end  
+
   def destroy
     @question.destroy
     flash[:success] = "Question deleted"
@@ -22,7 +41,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:description)
+      params.require(:question).permit(:description, :answer, :is_public)
     end
 
     def correct_user

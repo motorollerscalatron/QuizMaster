@@ -1,0 +1,9 @@
+<% provide(:title, 'questions') %>
+<h1>All questions</h1>
+  <% @question.each do |question|  %>
+     <ol class="questions">
+        <li><%= question.description %></li>
+        <!--<li><%# question.answer %></li>-->
+        <li>challange this quiz</li>
+     </ol>
+  <% end %>

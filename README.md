@@ -1,15 +1,21 @@
-# Ruby on Rails Tutorial sample application
+# Quiz Master
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/).
+## Sample Application
 
-## License
 
-All source code in the [Ruby on Rails Tutorial](http://railstutorial.org/)
-is available jointly under the MIT License and the Beerware License. See
-[LICENSE.md](LICENSE.md) for details.
+
+This site is for the guiding purpose, and not ready for performance/stress test.
+
+
+First, please sign up using your email address. Once you register them, you are redirected to home (There is no activation phase).
+
+To make your own quiz, please go to []
+
+Until you make the quiz item public, it will not be visible to other users.
+
+To see a list of quiz of all users, go to [TODO]
+
+To solve the questions, you can go to [TODO]
 
 ## Getting started
 
@@ -35,5 +41,6 @@ If the test suite passes, you'll be ready to run the app in a local server:
 
 ```
 $ rails server
-```
 
+
+##
