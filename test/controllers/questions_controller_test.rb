@@ -13,6 +13,11 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test "should redirect edit when not logged in" do
+    get edit_question_path(@question)
+    assert_redirected_to login_url
+  end
+
   test "should redirect destroy when not logged in" do
     assert_no_difference 'Question.count' do
       delete question_path(@question)

@@ -4,6 +4,6 @@
      <ol class="questions">
         <li><%= question.description %></li>
         <!--<li><%# question.answer %></li>-->
-        <li>challange this quiz</li>
+        <li><%= link_to "challange this quiz", new_challenge_path(:question_id => question.id) %></li>
      </ol>
   <% end %>

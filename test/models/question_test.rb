@@ -29,4 +29,9 @@ class QuestionTest < ActiveSupport::TestCase
   test "order should be most recent first" do
     assert_equal questions(:most_recent), Question.first
   end
+
+  test "not public yet when newly created" do
+    @question.save
+    assert_equal false, @question.is_public 
+  end
 end
