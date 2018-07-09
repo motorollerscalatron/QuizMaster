@@ -1,13 +1,16 @@
 class QuestionsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :create, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :create, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
     @question = Question.where("is_public = ?", 't').paginate(page: params[:page])
-#    @question = Question.paginate(page: params[:page])
 
     render 'questions/index'
   end
+
+#  def show
+#    @question = Question.find(params[:id])
+#  end
 
   def edit
     @question = Question.find(params[:id])

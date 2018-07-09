@@ -1,3 +1,4 @@
+# Users
 User.create!(name:  "Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
@@ -14,10 +15,25 @@ User.create!(name:  "Example User",
                password_confirmation: password)
 end
 
+# Questions
 users = User.order(:created_at).take(6)
 50.times do
   description = Faker::Lorem.sentence(5)
   answer = Faker::Lorem.word
   is_public = Faker::Boolean.boolean(0.5)
   users.each { |user| user.questions.create!(description: description, answer: answer, is_public: is_public) }
+end
+
+# Challenges
+users = User.all
+user = users.first
+questions = Question.all
+question = questions.where("is_public = ?", 't').first
+challengers = users[2..10]
+#challengers.each do { |challenger| user.challenges.create!(user: challenger, question: question, result: result) }
+challengers.each do |challenger|
+result = Faker::Boolean.boolean(0.5)
+    user.challenges.create!(user: challenger,
+                            question: question,
+                            result: result)
 end
