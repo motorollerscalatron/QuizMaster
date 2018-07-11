@@ -30,10 +30,11 @@ user = users.first
 questions = Question.all
 question = questions.where("is_public = ?", 't').first
 challengers = users[2..10]
-#challengers.each do { |challenger| user.challenges.create!(user: challenger, question: question, result: result) }
+my_answer = 'some aonswer'
 challengers.each do |challenger|
 result = Faker::Boolean.boolean(0.5)
     user.challenges.create!(user: challenger,
                             question: question,
-                            result: result)
+                            result: result,
+                            my_answer: my_answer)
 end

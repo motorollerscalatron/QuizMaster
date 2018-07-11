@@ -1,5 +1,5 @@
 <% provide(:title, "Edit quiz") %>
-<h1>Edit</h1>
+<h1>Edit #<%= @question.id %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -11,6 +11,9 @@
 
       <%= f.label :answer %>
       <%= f.text_field :answer, class: 'form-control' %>
+
+      <%= f.label :is_public %>
+      <%= f.check_box :is_public %>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
