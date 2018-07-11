@@ -16,21 +16,33 @@ class QuestionsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_select 'div#error_explanation'
     # Valid submission
-    description = "This question really ties the room together"
+    description = "Who invented the steam engine?"
+    answer = "James Watt"
     assert_difference 'Question.count', 1 do
-      post questions_path, params: { question: { description: description } }
+      post questions_path, params: { question: { description: description, answer: answer } }
     end
     assert_redirected_to root_url
     follow_redirect!
     assert_match description, response.body
-    # Delete post
+
+    # Delete question
     assert_select 'a', text: 'delete'
     first_question = @user.questions.paginate(page: 1).first
     assert_difference 'Question.count', -1 do
       delete question_path(first_question)
     end
+
     # Visit different user (no delete links)
     get user_path(users(:archer))
     assert_select 'a', text: 'delete', count: 0
+
+    # Find appropriate operation links in index & manage
+    get questions_path 
+    assert_select 'a', text: 'challenge this quiz'
+    assert_select 'a', text: 'edit this quiz'
+
+    get '/questions/manage' 
+    assert_select 'a', text: 'challenge this quiz'
+    assert_select 'a', text: 'edit this quiz'
   end
 end

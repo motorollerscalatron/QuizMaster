@@ -1,6 +1,8 @@
 <% provide(:title, 'challange quiz #') %>
 <h1>Challenge Quiz #<%= @question.id %> </h1>
 
+<%= render 'shared/note_challenge' %>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     Question: <%= @question.description %>

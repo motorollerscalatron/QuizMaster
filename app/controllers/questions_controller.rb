@@ -4,8 +4,14 @@ class QuestionsController < ApplicationController
 
   def index
     @question = Question.where("is_public = ?", 't').paginate(page: params[:page])
-
+    @list_type = 'All public '
     render 'questions/index'
+  end
+
+  def manage
+    @question = Question.where("user_id = ?", current_user.id).paginate(page: params[:page])
+    @list_type = 'Your '
+   render 'questions/index'
   end
 
 #  def show
@@ -30,6 +36,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update_attributes(question_params)
+      redirect_to action: :manage 
     else
       render 'edit'
     end

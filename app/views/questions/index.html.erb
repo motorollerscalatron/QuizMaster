@@ -1,9 +1,10 @@
 <% provide(:title, 'questions') %>
-<h1>All questions</h1>
+<h1><%= @list_type %> questions</h1>
   <% @question.each do |question|  %>
      <ol class="questions">
         <li><%= question.description %></li>
-        <!--<li><%# question.answer %></li>-->
-        <li><%= link_to "challange this quiz", new_challenge_path(:question_id => question.id) %></li>
+        <li><%= link_to "challenge this quiz", new_challenge_path(:question_id => question.id) %>
+            <% if question.user_id == current_user.id %> | <%= link_to "edit this quiz", edit_question_path(question) %> <% end %> 
+        </li>
      </ol>
   <% end %>

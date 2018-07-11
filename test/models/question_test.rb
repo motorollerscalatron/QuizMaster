@@ -21,8 +21,13 @@ class QuestionTest < ActiveSupport::TestCase
     assert_not @question.valid?
   end
 
-  test "content should be at most 255 characters" do
+  test "description should be at most 255 characters" do
     @question.description = "a" * 256
+    assert_not @question.valid?
+  end
+
+  test "answer should be at most 255 characters" do
+    @question.answer = "a" * 256
     assert_not @question.valid?
   end
 
