@@ -1,8 +1,10 @@
+
+You can create your question from here! -->
 <%= form_for(@question) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
     <%= f.text_area :description, placeholder: " question..." %>
     <%= f.text_area :answer, placeholder: "answer..." %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Create a question!", class: "btn btn-primary" %>
 <% end %>
