@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     end
   end
   get '/questions/manage', to: 'questions#manage', as: :manage_questions
-  resources :questions,  only: [:new, :index, :create, :edit, :update, :destroy]
+  resources :questions,  only: [:show, :new, :index, :create, :edit, :update, :destroy]
   resources :challenges, only: [:new, :create]
 end

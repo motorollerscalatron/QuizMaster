@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @questions = @user.questions.paginate(page: params[:page])
+    @questions = @user.questions.where("is_public = ?", 't').paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Quiz Master!"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end

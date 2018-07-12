@@ -3,11 +3,8 @@
     <%= link_to "Quiz Master", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   root_path %></li>
-        <li><%= link_to "Help",   help_path %></li>
 
         <% if logged_in? %>
-          <%# <li><%= link_to "Users", users_path %></li> %>
           <li><%= link_to "Manage Your Quiz", manage_questions_path %></li>
           <li><%= link_to "Challenge!", questions_path %></li> 
           <li class="dropdown">

@@ -1,9 +1,8 @@
 <% provide(:title, 'questions') %>
-<h1><%= @list_type %> questions</h1>
-    <%= debug @my_challenge_question_ids %>
+<h1><%= @list_type %> quiz</h1>
     <%if @list_type == "Your " %>
-    <div> <%= link_to "Add your new question", new_question_path %></div>
-    <div> While your question is private, it will not be visible to other users. Please use "edit" and tick the checkbox "is_public". </div>
+    <div> <%= link_to "Add q new quiz", new_question_path %></div>
+    <div> While your question is <span class="label-warning">private</span>, it will not be visible to other users. Please use "edit" and tick the checkbox "is_public". </div>
    <% end %>
 
   <% @question.each do |question|  %>
