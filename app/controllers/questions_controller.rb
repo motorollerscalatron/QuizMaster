@@ -1,9 +1,25 @@
+require 'will_paginate/array'
+
 class QuestionsController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :create, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def index
-    @question = Question.where("is_public = ?", 't').paginate(page: params[:page])
+
+    option_show_solved = params[:show_solved] #parameter to specify filter option
+
+    @question_public = Question.where("is_public = ?", 't') 
+    @my_challenge_question = Challenge.select("question_id").where("user_id = ? and result = ?", current_user.id, 't')
+    @my_challenge_question_ids = @my_challenge_question.distinct.pluck("question_id")
+
+    @question_public_filtered = Array.new
+
+    for q in @question_public do
+       @question_public_filtered.push(q) unless @my_challenge_question_ids.include?(q.id) 
+    end     
+
+    @question = @question_public_filtered.paginate(page: params[:page])
+
     @list_type = 'All public '
     render 'questions/index'
   end
@@ -18,6 +34,10 @@ class QuestionsController < ApplicationController
 #    @question = Question.find(params[:id])
 #  end
 
+  def new
+    @question = Question.new
+  end
+
   def edit
     @question = Question.find(params[:id])
   end
@@ -26,10 +46,10 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     if @question.save
       flash[:success] = "Questions created!"
-      redirect_to root_url
+       redirect_to manage_questions_path
     else
       @feed_items = []
-      render 'static_pages/home'
+      render 'new'
     end
   end
 

@@ -1,10 +1,19 @@
 <% provide(:title, 'questions') %>
 <h1><%= @list_type %> questions</h1>
+    <%= debug @my_challenge_question_ids %>
+    <%if @list_type == "Your " %>
+    <div> <%= link_to "Add your new question", new_question_path %></div>
+    <div> While your question is private, it will not be visible to other users. Please use "edit" and tick the checkbox "is_public". </div>
+   <% end %>
+
   <% @question.each do |question|  %>
+
      <ol class="questions">
-        <li><%= question.description %></li>
+        <li># <%= question.id %>: <% if question.is_public == false %><span class="label-warning">private</span><% end %> <%= question.description %></li>
         <li><%= link_to "challenge this quiz", new_challenge_path(:question_id => question.id) %>
-            <% if question.user_id == current_user.id %> | <%= link_to "edit this quiz", edit_question_path(question) %> <% end %> 
+            <% if question.user_id == current_user.id %>
+          | <%= link_to "edit this quiz", edit_question_path(question) %>
+            <% end %> 
         </li>
      </ol>
   <% end %>

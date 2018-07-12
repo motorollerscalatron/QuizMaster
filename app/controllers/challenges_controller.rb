@@ -13,14 +13,8 @@ class ChallengesController < ApplicationController
 
     @question = Question.find(@challenge.question_id)
 
-#    @challenge.result = (@question.answer == @challenge.my_answer) ? 't' : 'f' 
-#    @assessment =  (@question.answer == @challenge.my_answer) ? "Your answer is correct." : "Oops, you can try again."
-
-#    @challenge.result = @challenge.matchAnswer(@challenge.my_answer) ? 't' : 'f' 
-#    @assessment = @challenge.matchAnswer(@challenge.my_answer) ? "Your answer is correct." : "Oops, you can try again."
-
-    @challenge.result = true
-    @assessment = @challenge.matchAnswer(@challenge.my_answer)
+    @challenge.result = (@challenge.matchAnswer(@challenge.my_answer)) ? 't' : 'f'
+    @assessment = (@challenge.matchAnswer(@challenge.my_answer)) ? Challenge::FEEDBACK_CORRECT : Challenge::FEEDBACK_INCORRECT 
 
     if @challenge.save
       render template: "/challenges/result"

@@ -21,11 +21,12 @@ class QuestionsInterfaceTest < ActionDispatch::IntegrationTest
     assert_difference 'Question.count', 1 do
       post questions_path, params: { question: { description: description, answer: answer } }
     end
-    assert_redirected_to root_url
+    assert_redirected_to manage_questions_path
     follow_redirect!
     assert_match description, response.body
 
     # Delete question
+    get root_path
     assert_select 'a', text: 'delete'
     first_question = @user.questions.paginate(page: 1).first
     assert_difference 'Question.count', -1 do
