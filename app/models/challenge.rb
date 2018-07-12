@@ -14,8 +14,8 @@ class Challenge < ApplicationRecord
 
   def matchAnswer(string)
 
-    conv_correct = self.question.answer
-    conv_string = string
+    conv_correct = self.question.answer.squish
+    conv_string = string.squish
     
     if conv_correct =~ /^[0-9]+$/
       conv_correct = to_en(conv_correct.to_i)

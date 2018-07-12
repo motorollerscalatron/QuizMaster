@@ -1,43 +1,34 @@
 require 'will_paginate/array'
 
 class QuestionsController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :create, :destroy]
-  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :index, :edit, :update, :create, :destroy]
+  before_action :correct_user,   only: [:show, :edit, :update, :destroy]
 
   def index
-
     option_show_solved = params[:show_solved] #parameter to specify filter option
-
-    @question_public = Question.where("is_public = ?", 't') 
-    @my_challenge_question = Challenge.select("question_id").where("user_id = ? and result = ?", current_user.id, 't')
-    @my_challenge_question_ids = @my_challenge_question.distinct.pluck("question_id")
-
-    @question_public_filtered = Array.new
-
-    for q in @question_public do
-       @question_public_filtered.push(q) unless @my_challenge_question_ids.include?(q.id) 
-    end     
-
-    @question = @question_public_filtered.paginate(page: params[:page])
-
+    @question = Question.get_solved(current_user.id)
     @list_type = 'All public '
     render 'questions/index'
   end
 
+  # show a list of owned questions
   def manage
     @question = Question.where("user_id = ?", current_user.id).paginate(page: params[:page])
     @list_type = 'Your '
-   render 'questions/index'
+    render 'questions/index'
   end
 
-#  def show
-#    @question = Question.find(params[:id])
-#  end
+  # show questions statistics
+  def show
+    @question = Question.find(params[:id])
+  end
 
+  # create a new question
   def new
     @question = Question.new
   end
 
+  # edit an existing question
   def edit
     @question = Question.find(params[:id])
   end

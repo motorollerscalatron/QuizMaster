@@ -2,13 +2,19 @@ require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
+  def setup
+    @user = users(:michael)
+  end
+
   test "layout links" do
     get root_path
     assert_template 'static_pages/home'
-    assert_select "a[href=?]", root_path, count: 2
-    assert_select "a[href=?]", help_path
-#    The following items will not exist any more after footer is removed
-#    assert_select "a[href=?]", about_path
-#    assert_select "a[href=?]", contact_path
+    assert_select "a[href=?]", root_path
+
+    log_in_as(@user)
+    get root_path
+    assert_template 'static_pages/home'
+    assert_select "a[href=?]", root_path
+    assert_select "a[href=?]", manage_questions_path
   end
 end

@@ -1,0 +1,21 @@
+<% provide(:title, @question.id) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="question_info">
+      <h1>Question #<%= @question.id %></h1>
+    </section>  
+  </aside>
+  <div class="col-md-8">
+    <section class="question_description">Question: <%= @question.description %></section>
+    <section class="question_answer">Answer: <%= @question.answer %></section>
+    <section class="question_is_public">public: <%= @question.is_public %></section>
+    <% if @question.challenges.any? %>
+      <section class="question_challenges">
+total challenges: <%= @question.challenges.count %>
+ (correct: <%= @question.challenges.where('result = ?', 't').count %> )</section>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+<span><%= link_to "manage your quiz", manage_questions_path %></span>
+</div>
