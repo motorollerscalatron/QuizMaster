@@ -20,13 +20,22 @@
         </section>
         <section class="question_misc">
         </section>
-        <section class="assessement" name="feedback">
+        <section class="assessement" id="feedback">
         Assessment: <%= @assessment %>
         </section>
-
+        <section class="note" style="color:red;">
+<% if @question.user == current_user %>
+          *Challenge to your own quiz does not add your score.*
+<% end %>
+        </section>
   </div>
 </div>
 
 <div class="row">
+<% if @question.user == current_user %>
+<span>
+<%= link_to "manage questions", manage_questions_path %></span>
+<% else %>
 <span><%= link_to "challenge other questions", questions_path %></span>
+<% end %>
 </div>

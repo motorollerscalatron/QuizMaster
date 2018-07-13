@@ -1,7 +1,8 @@
 class Challenge < ApplicationRecord
 
+  # feedback phrases shown after the user challenge a question
   FEEDBACK_CORRECT   = 'Right!' 
-  FEEDBACK_INCORRECT = 'Oops try again ...'
+  FEEDBACK_INCORRECT = 'Oops...'
   FEEDBACK_CLOSE     = 'Very close ...'
 
   attr_accessor :my_answer
@@ -12,6 +13,7 @@ class Challenge < ApplicationRecord
   validates :question_id, presence: true
   validates :my_answer,   presence: true
 
+  # matches the submitted answer with the question's correct answer.
   def matchAnswer(string)
 
     conv_correct = self.question.answer.squish
@@ -29,6 +31,9 @@ class Challenge < ApplicationRecord
   end
 
   private  
+
+    # Helper method to convert an integer value to the english word
+    # Acceptable range: 1 - 999999, positive
     def to_en(number)
       return number.to_s unless number.is_a?(Integer)
       case number

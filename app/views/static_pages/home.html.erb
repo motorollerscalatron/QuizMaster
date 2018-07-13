@@ -4,17 +4,17 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
-      <section class="stats">
-        <%#= render 'shared/stats' %>
-      </section>
       <section class=question_form">
+        <div>create a quiz</div>
         <%= render 'shared/question_form' %>
       </section>
     </aside>
+
     <div class="col-md-6">
-      <h3>Question Feed</h3>
-      <%= render 'shared/feed' %>
+      <h3>Where am I going?</h3>
+      <%= render 'shared/instruction' %>
     </div>
+
 <% else %>
   <% provide(:title, "Home") %>
   <h1>Quiz Master</h1>

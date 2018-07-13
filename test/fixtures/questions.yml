@@ -7,6 +7,34 @@ mind_expander:
   user: michael
   created_at: <%= 3.years.ago %>
 
+styled:
+  description: "<b>b</b><strong>strong</strong>"
+  answer: "whatever"
+  is_public: true
+  user: archer
+  created_at: <%= 1.years.ago %>
+
+numeric:
+  description: "How many teeth do anes adult human have?"
+  answer: "32"
+  is_public: true
+  user: michael
+  created_at: <%= 1.years.ago %>
+
+numeric_one_word:
+  description: "100 / 2 = "
+  answer: "50"
+  is_public: true
+  user: archer
+  created_at: <%= 1.years.ago %>
+
+numeric_minus:
+  description: "10 - 100 = "
+  answer: "-90"
+  is_public: true
+  user: archer
+  created_at: <%= 1.years.ago %>
+
 mediocre:
   description: "Where is the capital city of Japan"
   answer: "tokyo"

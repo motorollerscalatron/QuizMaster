@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+
+  # home screen, including all instructions
   def home
     if logged_in?
       @question   = current_user.questions.build
@@ -9,9 +11,4 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-#  def about
-#  end
-
-#  def contact
-#  end
 end
