@@ -56,11 +56,11 @@ class QuestionsController < ApplicationController
   end  
 
   # destroy an existing question
-  def destroy
-    @question.destroy
-    flash[:success] = "Question deleted"
-    redirect_to request.referrer || root_url
-  end
+#  def destroy
+#    @question.destroy
+#    flash[:success] = "Question deleted"
+#    redirect_to request.referrer || root_url
+#  end
 
   private
 
