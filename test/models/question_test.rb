@@ -39,4 +39,10 @@ class QuestionTest < ActiveSupport::TestCase
     @question.save
     assert_equal false, @question.is_public 
   end
+
+  test "answer should not be blank when public" do
+    @question.answer = "   "
+    @question.is_public = true
+    assert_not @question.valid?
+  end
 end

@@ -24,15 +24,12 @@ class ChallengesController < ApplicationController
     if @challenge.question.user == current_user
       render template: "/challenges/result"
     else
-
-    if @challenge.save
-      render template: "/challenges/result"
-    else
-      render new_challege_path(question_id: params[:question_id])
+      if @challenge.save
+        render template: "/challenges/result"
+      else
+        render new_challenge_path(question_id: params[:question_id])
+      end
     end
-
-    end
-
   end
 
   private
