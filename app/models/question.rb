@@ -5,6 +5,7 @@ class Question < ApplicationRecord
   validates :user_id, presence: true
   validates :description, presence: true, length: { maximum: 255}, allow_blank: false
   validates :answer, length: { maximum: 255 }
+  validates :answer, presence: true, length: { maximum: 255 }, allow_blank: false, :if => lambda { |o| o.is_public == true }
 
   def self.get_solved(user_id)
 
