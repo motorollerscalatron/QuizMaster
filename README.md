@@ -1,5 +1,7 @@
 # Quiz Master
 
+[![Inline docs](http://inch-ci.org/github/{motorollerscalatron/QuizMaster.svg?branch=master)](http://inch-ci.org/github/motorollerscalatron/QuizMaster)
+
 ## Sample Application
 
 You can find app on heroku server location, which would be emailed separately.
@@ -28,7 +30,8 @@ Once you created a question, you can update attributes by edit.
 
 ### account
 
-profile:
+`profile` shows your user profile. In `setting`, you can edit your account information.
+
 setting:
 
 ## Set up
