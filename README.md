@@ -32,8 +32,6 @@ Once you created a question, you can update attributes by edit.
 
 `profile` shows your user profile. In `setting`, you can edit your account information.
 
-setting:
-
 ## Set up
 
 To get started with the app, clone the repo and then install the needed gems:
