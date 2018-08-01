@@ -1,6 +1,6 @@
 # Quiz Master
 
-[![Inline docs](http://inch-ci.org/github/motorollerscalatron/QuizMaster.svg?branch=master)](http://inch-ci.org/github/motorollerscalatron/QuizMaster)
+[![Inline docs](http://inch-ci.org/github/motorollerscalatron/QuizMaster.svg?branch=master)](http://inch-ci.org/github/motorollerscalatron/QuizMaster)  [![Build Status](https://travis-ci.com/motorollerscalatron/QuizMaster.svg?branch=master)](https://travis-ci.com/motorollerscalatron/QuizMaster)
 
 ## Sample Application
 
