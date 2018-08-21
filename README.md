@@ -2,11 +2,6 @@
 
 [![Inline docs](http://inch-ci.org/github/motorollerscalatron/QuizMaster.svg?branch=master)](http://inch-ci.org/github/motorollerscalatron/QuizMaster)  [![Build Status](https://travis-ci.com/motorollerscalatron/QuizMaster.svg?branch=master)](https://travis-ci.com/motorollerscalatron/QuizMaster)
 
-## Sample Application
-
-You can find app on heroku server location, which would be emailed separately.
-This site is for the guiding purpose, and not ready for performance/stress test.
-
 ## Getting started
 
 First, please sign up using your email address. Once you register them, you are redirected to home (There is no activation phase).
